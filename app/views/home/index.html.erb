@@ -1,0 +1,33 @@
+<h2>Activity Definitions</h2>
+
+<table>
+  <thead>
+    <th>Icon</th>
+    <th>Release Icon</th>
+    <th>PGCR Image</th>
+    <th>Activity Name</th>
+    <th>Activity Description</th>
+    <th>Players</th>
+    <th>Required Level</th>
+  </thead>
+  <tbody>
+    <% @activities.each do |activity| %>
+      <% data = JSON.parse activity.json %>
+      <tr>
+        <td>
+          <img src="http://www.bungie.net<%= data["icon"] %>">
+        </td>
+        <td>
+          <img src="http://www.bungie.net<%= data["releaseIcon"] %>">
+        </td>
+        <td>
+          <img src="http://www.bungie.net<%= data["pgcrImage"] %>">
+        </td>
+        <td><%= data["activityName"] %></td>
+        <td><%= data["activityDescription"] %></td>
+        <td>Fireteam of <%= data["minParty"] %> - <%= data["maxParty"] %> (<%= data["maxPlayers"] %> total)</td>
+        <td><%= data["activityLevel"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
